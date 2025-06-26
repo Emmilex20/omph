@@ -13,8 +13,11 @@ import ContactUsPage from './pages/ContactUsPage';
 import NewsPage from './pages/NewsPage';
 import BulletinPage from './pages/BulletinPage';
 import MassTimesPage from './pages/MassTimesPage';
+import useScrollToTop from './hooks/useScrollToTop';
 
 function App() {
+  useScrollToTop();
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-50 font-sans text-dark">

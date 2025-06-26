@@ -74,14 +74,11 @@ const ContactUsPage = () => {
   };
 
   // Using the provided image URL for the hero section
-  const heroBackgroundImage = 'https://images.unsplash.com/photo-1510444390610-85f29f03221c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-
   return (
     <div className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-800">
       {/* Hero Section */}
       <section
-        className="relative bg-cover bg-center h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
-        style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
+        className="relative bg-hero-contact bg-cover bg-center h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-primary/40 rounded-b-3xl"></div>
         <div className="absolute inset-0 bg-black opacity-30 rounded-b-3xl"></div>
@@ -114,7 +111,7 @@ const ContactUsPage = () => {
               <p className="flex items-center space-x-4">
                 <Mail size={32} className="text-primary flex-shrink-0" />
                 <span>
-                  <strong>Email:</strong> <a href="mailto:info@stmichaelchurch.org" className="hover:underline">info@stmichaelchurch.org</a>
+                  <strong>Email:</strong> <a href="mailto:info@stmichaelchurch.org" className="hover:underline">info@omphchurch.org</a>
                 </span>
               </p>
               <p className="flex items-center space-x-4">
