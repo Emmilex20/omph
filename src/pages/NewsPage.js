@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CalendarDays, Tag, Search, Newspaper, Mail, X, Info } from 'lucide-react'; // Added Info for the error message
+import { CalendarDays, Tag, Search, Newspaper, Mail, X, Info, CheckCircle, AlertTriangle } from 'lucide-react'; // Added Info, CheckCircle, AlertTriangle for custom alert
 
 // NEW News Article Details Modal Component
 const NewsDetailsModal = ({ isOpen, onClose, article }) => {
@@ -53,6 +53,11 @@ const NewsDetailsModal = ({ isOpen, onClose, article }) => {
 
 // NEW Newsletter Signup Modal Component
 const NewsletterSignupModal = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('success'); // 'success' or 'error'
+
   const modalClasses = `fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50
                         transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
   const contentClasses = `bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full text-center relative
@@ -63,12 +68,44 @@ const NewsletterSignupModal = ({ isOpen, onClose }) => {
     return null;
   }
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    // In a real app, you would send the email to your newsletter service
-    console.log('Newsletter subscribed!');
-    alert('Thank you for subscribing to our newsletter!'); // Using alert for demo as per previous pattern
-    onClose();
+  const handleSubscribe = async (event) => {
+    event.preventDefault();
+
+    // Formspree endpoint (replace xyzjlgwb with your actual Formspree form ID)
+    const formspreeUrl = "https://formspree.io/f/xovwyawb";
+
+    try {
+      const response = await fetch(formspreeUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }),
+      });
+
+      if (response.ok) {
+        setAlertMessage('Thank you for subscribing to our newsletter!');
+        setAlertType('success');
+        setShowAlert(true);
+        setEmail(''); // Clear the email input field
+      } else {
+        const errorData = await response.json();
+        setAlertMessage(`Failed to subscribe: ${errorData.error || 'Unknown error'}`);
+        setAlertType('error');
+        setShowAlert(true);
+        console.error('Formspree submission error:', errorData);
+      }
+    } catch (error) {
+      setAlertMessage('An error occurred during subscription. Please try again.');
+      setAlertType('error');
+      setShowAlert(true);
+      console.error('Network or fetch error:', error);
+    }
+    // Auto-hide alert after 5 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage('');
+    }, 5000);
   };
 
   return (
@@ -91,6 +128,8 @@ const NewsletterSignupModal = ({ isOpen, onClose }) => {
               type="email"
               placeholder="Your Email Address"
               className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <button
@@ -100,6 +139,18 @@ const NewsletterSignupModal = ({ isOpen, onClose }) => {
               Subscribe Now
             </button>
           </form>
+          
+          {/* Custom Alert Message */}
+          {showAlert && (
+            <div className={`mt-4 p-4 rounded-lg flex items-center space-x-3
+                            ${alertType === 'success' ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
+              {alertType === 'success' ? <CheckCircle size={24} className="flex-shrink-0" /> : <AlertTriangle size={24} className="flex-shrink-0" />}
+              <p className="text-sm flex-grow">{alertMessage}</p>
+              <button onClick={() => setShowAlert(false)} className="text-gray-500 hover:text-gray-800 focus:outline-none">
+                <X size={20} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -470,6 +521,7 @@ const NewsPage = () => {
         onClose={closeNewsModal}
         article={currentNewsArticle}
       />
+      {/* Using the NewsletterSignupModal component here */}
       <NewsletterSignupModal
         isOpen={isNewsletterModalOpen}
         onClose={closeNewsletterModal}
