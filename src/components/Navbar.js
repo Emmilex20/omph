@@ -13,6 +13,10 @@ import {
   X,
   ChevronDown, // New icon for dropdown
   ChevronUp,   // New icon for dropdown
+  Newspaper, // Added for News icon
+  Clock,     // Added for Mass Times icon
+  FileText,  // Added for Bulletin icon
+  Mic,       // Added for Sermons icon
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -22,8 +26,24 @@ const Navbar = () => {
   // New structure for navigation links, including nested links for dropdowns
   const navLinks = [
     { name: 'Home', path: '/', icon: Home, type: 'link' },
-    { name: 'About Us', path: '/about', icon: Info, type: 'link' },
-    { name: 'Sacraments', path: '/sacraments', icon: Cross, type: 'link' },
+    {
+      name: 'About Our Parish', // New dropdown name
+      icon: Info, // Using Info icon for About dropdown
+      type: 'dropdown',
+      subLinks: [
+        { name: 'About Us', path: '/about', icon: Info },
+        { name: 'News', path: '/news', icon: Newspaper }, // News link moved here
+      ],
+    },
+    {
+      name: 'Faith & Worship', // NEW Dropdown for Sacraments and Sermons
+      icon: Cross, // Using Cross icon for Faith & Worship dropdown
+      type: 'dropdown',
+      subLinks: [
+        { name: 'Sacraments', path: '/sacraments', icon: Cross }, // Sacraments link moved here
+        { name: 'Sermons', path: '/sermons', icon: Mic }, // Sermons link moved here
+      ],
+    },
     {
       name: 'Parish Life',
       icon: Users, // Using Users icon for Parish Life dropdown
@@ -31,6 +51,8 @@ const Navbar = () => {
       subLinks: [
         { name: 'Ministries', path: '/ministries', icon: Users },
         { name: 'Calendar & Events', path: '/events', icon: Calendar }, // Combined/renamed
+        { name: 'Mass Times', path: '/mass-times', icon: Clock }, // New link for Mass Times
+        { name: 'Bulletin & Readings', path: '/bulletin', icon: FileText }, // New link for Bulletin
         { name: 'Clergy & Staff', path: '/clergy', icon: BookOpen },
       ],
     },
