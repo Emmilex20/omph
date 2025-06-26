@@ -73,15 +73,12 @@ const ContactUsPage = () => {
     setSubmissionMessageText(''); // Clear the message when modal closes
   };
 
-  // Using the provided image URL for the hero section
-  const heroBackgroundImage = 'https://images.unsplash.com/photo-1510444390610-85f29f03221c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-800">
       {/* Hero Section */}
       <section
-        className="relative bg-cover bg-center h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
-        style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
+        className="relative bg-hero-contact bg-cover bg-center h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-primary/40 rounded-b-3xl"></div>
         <div className="absolute inset-0 bg-black opacity-30 rounded-b-3xl"></div>
@@ -99,25 +96,25 @@ const ContactUsPage = () => {
               Parish Office & Contact Information
             </h2>
             <div className="space-y-6 text-lg text-gray-700">
-              <p className="flex items-center space-x-4">
+              <p className="flex items-start space-x-4"> {/* Changed to items-start for better multi-line alignment */}
                 <MapPin size={32} className="text-primary flex-shrink-0" />
                 <span>
                   <strong>Address:</strong> 123 Divine Avenue, Faith City, GA 30303
                 </span>
               </p>
-              <p className="flex items-center space-x-4">
+              <p className="flex items-start space-x-4"> {/* Changed to items-start */}
                 <Phone size={32} className="text-primary flex-shrink-0" />
                 <span>
                   <strong>Phone:</strong> <a href="tel:(123) 456-7890" className="hover:underline">(123) 456-7890</a>
                 </span>
               </p>
-              <p className="flex items-center space-x-4">
+              <p className="flex items-start space-x-4"> {/* Changed to items-start */}
                 <Mail size={32} className="text-primary flex-shrink-0" />
-                <span className="break-words"> {/* Added break-words for responsiveness */}
+                <span className="min-w-0 break-words"> {/* Added min-w-0 for better flex-item shrinking */}
                   <strong>Email:</strong> <a href="mailto:info@omphchurch.org" className="hover:underline">info@omphchurch.org</a>
                 </span>
               </p>
-              <p className="flex items-center space-x-4">
+              <p className="flex items-start space-x-4"> {/* Changed to items-start */}
                 <Clock size={32} className="text-primary flex-shrink-0" />
                 <span>
                   <strong>Office Hours:</strong> Monday - Friday: 9:00 AM - 4:00 PM
