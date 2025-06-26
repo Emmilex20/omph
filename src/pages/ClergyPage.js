@@ -3,12 +3,19 @@ import { Mail, Phone, X } from 'lucide-react'; // Added X for modal close button
 
 // Reusable Member Details Modal Component
 const MemberDetailsModal = ({ isOpen, onClose, member }) => {
+  // Base classes for the modal overlay: fixed, full screen, dark background, centered content
+  // Transition classes ensure smooth appearance/disappearance
   const modalClasses = `fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50
                         transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
+  
+  // Classes for the modal content box: white background, rounded corners, shadow, responsive width
+  // max-h-[90vh] and overflow-y-auto ensure content is scrollable on smaller screens if too long
+  // Transform classes create a subtle zoom-in/out effect during transition
   const contentClasses = `bg-white rounded-xl shadow-2xl p-8 max-w-2xl w-full relative max-h-[90vh] overflow-y-auto
                           transform transition-all duration-300 ease-out
                           ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`;
 
+  // Optimization: If modal is not open and fully faded out, don't render anything
   if (!isOpen && contentClasses.includes('opacity-0')) {
     return null;
   }
@@ -16,6 +23,7 @@ const MemberDetailsModal = ({ isOpen, onClose, member }) => {
   return (
     <div className={modalClasses} onClick={onClose}>
       <div className={contentClasses} onClick={e => e.stopPropagation()}>
+        {/* Close button: absolute positioning, styled for accessibility and hover effects */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors duration-200 rounded-full p-2 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -23,33 +31,43 @@ const MemberDetailsModal = ({ isOpen, onClose, member }) => {
           <X size={24} />
         </button>
         {member && (
+          // Content layout: flex-col for mobile (stacks vertically), md:flex-row for medium screens and up (side-by-side)
+          // items-center/start ensures vertical alignment within flex containers
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+            {/* Member image: responsive sizing with w-48/h-64 for mobile, md:w-56/md:h-72 for larger screens */}
             <div className="flex-shrink-0 w-48 h-64 md:w-56 md:h-72 rounded-lg overflow-hidden shadow-lg">
               <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" />
             </div>
+            {/* Text content: text-center for mobile, md:text-left for larger screens */}
             <div className="text-center md:text-left flex-grow">
               <h3 className="text-4xl font-bold font-serif text-primary mb-2">{member.name}</h3>
               <p className="text-primary text-xl font-semibold mb-4">{member.title}</p>
               
+              {/* Full biography: standard text styling with line height */}
               <div className="space-y-4 text-gray-700 text-base leading-relaxed mb-6">
                 {member.fullBio.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-6 text-primary">
-                <a href={`mailto:${member.email}`} className="flex items-center justify-center space-x-2 hover:text-accent transition-colors duration-300 text-lg sm:text-base">
+              {/* Contact links: flex-col for mobile (stacks), sm:flex-row for small screens and up (side-by-side) */}
+              {/* justify-center/md:justify-start ensures alignment. Added w-full to this container */}
+              <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-6 text-primary w-full">
+                <a href={`mailto:${member.email}`} className="flex items-center justify-center space-x-2 hover:text-accent transition-colors duration-300 text-base sm:text-lg w-full">
                   <Mail size={20} />
-                  <span>{member.email}</span>
+                  {/* Added min-w-0 and break-all for better text wrapping on small screens */}
+                  <span className="min-w-0 break-all">{member.email}</span>
                 </a>
-                <a href={`tel:${member.phone}`} className="flex items-center justify-center space-x-2 hover:text-accent transition-colors duration-300 text-lg sm:text-base">
+                <a href={`tel:${member.phone}`} className="flex items-center justify-center space-x-2 hover:text-accent transition-colors duration-300 text-base sm:text-lg w-full">
                   <Phone size={20} />
-                  <span>{member.phone}</span>
+                  {/* Added min-w-0 and break-all for better text wrapping on small screens */}
+                  <span className="min-w-0 break-all">{member.phone}</span>
                 </a>
               </div>
             </div>
           </div>
         )}
+        {/* Main close button at the bottom of the modal: full width on mobile, auto width on larger screens */}
         <button
           onClick={onClose}
           className="mt-10 bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold
@@ -164,11 +182,14 @@ const ClergyPage = () => {
   ];
 
   // Hero Section background image (using an image that complements events)
+  const heroBackgroundImage = 'https://images.unsplash.com/photo-1510444390610-85f29f03221c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
   return (
     <div className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-800">
       {/* Hero Section */}
       <section
-        className="relative bg-hero-ministry bg-center bg-cover h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
+        className="relative bg-center bg-cover h-[50vh] flex items-center justify-center text-white shadow-xl mb-16 rounded-b-3xl"
+        style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-primary/40 rounded-b-3xl"></div>
         <div className="absolute inset-0 bg-black opacity-30 rounded-b-3xl"></div>
