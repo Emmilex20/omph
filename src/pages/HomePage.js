@@ -268,7 +268,7 @@ const HomePage = () => {
               <ul className="space-y-4 text-lg">
                 <li className="flex items-start">
                   <MapPin size={24} className="mr-4 mt-1 text-accent flex-shrink-0" />
-                  <span>123 Divine Path, Cityville, State 12345</span>
+                  <span>F8J7+VM9, Maria Rd, Amuwo Odofin Estate, Lagos 102102, Lagos</span>
                 </li>
                 <li className="flex items-start">
                   <Phone size={24} className="mr-4 mt-1 text-accent flex-shrink-0" />

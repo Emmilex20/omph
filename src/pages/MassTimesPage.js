@@ -131,7 +131,7 @@ const MassTimesPage = () => {
   ];
 
   // Hero Section background image (using a powerful church interior)
-  const heroBackgroundImage = 'https://images.unsplash.com/photo-1601676837837-14e3b782970b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  const heroBackgroundImage = 'https://cmsv2-assets.apptegy.net/uploads/11028/file/938312/2d9ac59c-24f0-4287-ac31-ecd822419845.jpeg';
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-800">

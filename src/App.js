@@ -15,6 +15,10 @@ import NewsPage from './pages/NewsPage';
 import BulletinPage from './pages/BulletinPage';
 import MassTimesPage from './pages/MassTimesPage';
 import useScrollToTop from './hooks/useScrollToTop'; // Correctly imported
+import SermonsPage from './pages/SermonsPage';
+import FaqsPage from './pages/FaqsPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import SitemapPage from './pages/SiteMapPage';
 
 function App() {
   useScrollToTop(); // Hook is called here, now guaranteed to be within Router context
@@ -37,6 +41,10 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/bulletin" element={<BulletinPage />} />
           <Route path="/mass-times" element={<MassTimesPage />} />
+          <Route path="/sermons" element={<SermonsPage />} />
+          <Route path="/faqs" element={<FaqsPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/sitemap" element={<SitemapPage />} />
           {/* Add more routes for additional pages */}
         </Routes>
       </main>

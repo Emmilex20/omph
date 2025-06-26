@@ -58,7 +58,7 @@ const BulletinPage = () => {
             <div className="border border-secondary rounded-lg p-6 flex flex-col md:flex-row items-center gap-6 shadow-md">
               <div className="md:w-1/3 flex-shrink-0">
                 <img
-                  src="https://placehold.co/300x400/C5CAE9/000000?text=Bulletin+Cover"
+                  src="https://images.booksense.com/images/136/176/9781586176136.jpg"
                   alt="Bulletin Cover"
                   className="w-full h-auto rounded-md shadow-lg"
                 />

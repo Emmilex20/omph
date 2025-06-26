@@ -45,7 +45,7 @@ const Footer = () => {
           <p className="flex items-center space-x-2 text-sm mb-2">
             <MapPin size={18} />
             {/* Updated address for consistency */}
-            <span>[Your Church Address Here, e.g., 123 Church Road, Lekki Phase 1, Lagos]</span>
+            <span>F8J7+VM9, Maria Rd, Amuwo Odofin Estate, Lagos 102102, Lagos</span>
           </p>
           <p className="flex items-center space-x-2 text-sm mb-2">
             <Phone size={18} />
@@ -53,7 +53,7 @@ const Footer = () => {
           </p>
           <p className="flex items-center space-x-2 text-sm">
             <Mail size={18} />
-            <span>info@yourchurch.org</span> {/* Changed to a generic email placeholder */}
+            <span>info@omphchurch.org</span> {/* Changed to a generic email placeholder */}
           </p>
           <p className="text-sm mt-4">
             Office Hours:<br />

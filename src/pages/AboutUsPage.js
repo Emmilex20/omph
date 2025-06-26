@@ -214,7 +214,7 @@ const AboutUsPage = () => {
               Our Mother Of Perpetual Help Catholic Church is proudly situated in the vibrant and growing community of <strong>Amuwo, Lagos, Nigeria</strong>. We are a parish of the <strong>Catholic Archdiocese of Lagos</strong>, serving the spiritual needs of families and individuals across our region.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our address is [Your Church Address Here, e.g., 123 Church Road, Lekki Phase 1, Lagos]. We invite you to visit us and become a part of our thriving parish family.
+              Our address is F8J7+VM9, Maria Rd, Amuwo Odofin Estate, Lagos 102102, Lagos. We invite you to visit us and become a part of our thriving parish family.
             </p>
           </div>
         </div>

@@ -99,7 +99,7 @@ const ContactUsPage = () => {
               <p className="flex items-start space-x-4"> {/* Changed to items-start for better multi-line alignment */}
                 <MapPin size={32} className="text-primary flex-shrink-0" />
                 <span>
-                  <strong>Address:</strong> 123 Divine Avenue, Faith City, GA 30303
+                  <strong>Address:</strong> F8J7+VM9, Maria Rd, Amuwo Odofin Estate, Lagos 102102, Lagos
                 </span>
               </p>
               <p className="flex items-start space-x-4"> {/* Changed to items-start */}
@@ -134,7 +134,7 @@ const ContactUsPage = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-serif text-primary p-8 pb-4">Find Us on the Map</h2>
             <div className="relative w-full" style={{ paddingTop: '75%' }}> {/* Maintain aspect ratio */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.220199920038!2d-122.4194156!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858087f9c8f1e5%3A0x6b4c1a5d0b4e2f9d!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3116188083177!2d3.3142351!3d6.4821617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8934ac1c14f9%3A0x46fc151d78b05690!2sOur%20Mother%20Of%20Perpertual%20Help%20Catholic%20Church%20Amuwo%20Odofin!5e0!3m2!1sen!2sng!4v1750903751057!5m2!1sen!2sng"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -146,7 +146,7 @@ const ContactUsPage = () => {
               ></iframe>
             </div>
             <p className="text-sm text-gray-500 p-4 text-center">
-              *Map shows a placeholder location (Golden Gate Bridge). Replace with your church's actual coordinates.*
+              *Map shows a placeholder location for Our Mother Of Perpetual Help Cattholic Church.*
             </p>
           </div>
         </section>
