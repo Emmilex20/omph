@@ -17,6 +17,7 @@ import {
   Clock,     // Added for Mass Times icon
   FileText,  // Added for Bulletin icon
   Mic,       // Added for Sermons icon
+  BellRing,  // Added for Parish Activities icon
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -33,6 +34,7 @@ const Navbar = () => {
       subLinks: [
         { name: 'About Us', path: '/about', icon: Info },
         { name: 'News', path: '/news', icon: Newspaper }, // News link moved here
+        { name: 'Parish Activities', path: '/parish-activities', icon: BellRing }, // Added Parish Activities link
       ],
     },
     {

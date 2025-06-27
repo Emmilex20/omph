@@ -19,6 +19,7 @@ import SermonsPage from './pages/SermonsPage';
 import FaqsPage from './pages/FaqsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import SitemapPage from './pages/SiteMapPage';
+import ParishActivitiesPage from './pages/ParishActivitiesPage';
 
 function App() {
   useScrollToTop(); // Hook is called here, now guaranteed to be within Router context
@@ -45,6 +46,7 @@ function App() {
           <Route path="/faqs" element={<FaqsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/sitemap" element={<SitemapPage />} />
+          <Route path="/parish-activities" element={<ParishActivitiesPage />} />
           {/* Add more routes for additional pages */}
         </Routes>
       </main>
