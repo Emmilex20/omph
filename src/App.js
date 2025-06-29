@@ -1,6 +1,8 @@
-import React from 'react';
-// IMPORTANT: Removed BrowserRouter import as it's now in index.js
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Loader2 } from 'lucide-react'; // Import a loading icon
+
+// Import your existing components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -14,19 +16,40 @@ import ContactUsPage from './pages/ContactUsPage';
 import NewsPage from './pages/NewsPage';
 import BulletinPage from './pages/BulletinPage';
 import MassTimesPage from './pages/MassTimesPage';
-import useScrollToTop from './hooks/useScrollToTop'; // Correctly imported
+import useScrollToTop from './hooks/useScrollToTop';
 import SermonsPage from './pages/SermonsPage';
 import FaqsPage from './pages/FaqsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import SitemapPage from './pages/SiteMapPage';
 import ParishActivitiesPage from './pages/ParishActivitiesPage';
 
+
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate app-wide loading (e.g., fetching initial user data, configs, etc.)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time for the entire app
+
+    return () => clearTimeout(timer);
+  }, []); // Run only once on component mount
+
   useScrollToTop(); // Hook is called here, now guaranteed to be within Router context
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="text-primary flex flex-col items-center">
+          <Loader2 size={64} className="animate-spin mb-4" />
+          <p className="text-xl font-semibold">Loading Our Parish App...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    // IMPORTANT: Removed the <Router> component from here.
-    // The main <Router> should only exist once, in your index.js file.
     <div className="flex flex-col min-h-screen bg-gray-50 font-sans text-dark">
       <Navbar />
       <main className="flex-grow">
