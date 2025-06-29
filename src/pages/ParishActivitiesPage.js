@@ -1,7 +1,29 @@
-import React from 'react';
-import { Church, CalendarDays, Clock, Users } from 'lucide-react';
+import React, { useState, useEffect } from 'react'; // Added useState and useEffect
+import { Church, CalendarDays, Clock, MapPin, Mail, Phone, BookOpen, Users, BellRing, Loader2 } from 'lucide-react'; // Added Loader2 icon
 
 const ParishActivitiesPage = () => {
+  const [isLoading, setIsLoading] = useState(true); // State for loading animation
+
+  useEffect(() => {
+    // Simulate content loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Adjust loading time as needed (e.g., 1500ms = 1.5 seconds)
+
+    return () => clearTimeout(timer); // Cleanup timer
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="text-primary flex flex-col items-center">
+          <Loader2 size={64} className="animate-spin mb-4" />
+          <p className="text-xl font-semibold">Loading Parish Activities...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen text-gray-800">
       {/* Hero Section */}
@@ -31,18 +53,17 @@ const ParishActivitiesPage = () => {
                 <div className="text-left">
                   <p className="font-semibold text-primary text-xl mb-2">Main Church</p>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>6:30 am</li>
-                    <li>8:30 am (Youth)</li>
-                    <li>10:30 am (Latin)</li>
+                    <li>6:15 am</li>
+                    <li>8:00 am (Youth)</li>
+                    <li>10:00 am (Latin)</li>
                     <li>5:00 pm (Holy Hour with Vespers)</li>
-                    <li>6:00 pm (Evening mass)</li>
+                    <li>6:00 pm</li>
                   </ul>
                 </div>
                 <div className="text-left pt-4 border-t border-gray-200">
-                  <p className="font-semibold text-primary text-xl mb-2">Mass Center</p>
+                  <p className="font-semibold text-primary text-xl mb-2">Upper Hall</p>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>7:00 am </li>
-                    <li>9:00 am </li>
+                    <li>8:00 am (Children Mass)</li>
                   </ul>
                 </div>
               </div>
@@ -56,7 +77,7 @@ const ParishActivitiesPage = () => {
                 <div className="text-left">
                   <p className="font-semibold text-primary text-xl mb-2">Weekdays</p>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>Morning: 6:30 am</li>
+                    <li>Morning: 6 am</li>
                     <li>Afternoon: 12:30 pm</li>
                     <li>Evening: 6:30 pm</li>
                   </ul>
@@ -162,12 +183,12 @@ const ParishActivitiesPage = () => {
         {/* Holy Family Parish Feast Day Image Section */}
         <section className="mb-20">
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-primary mb-10 text-center leading-tight">
-            Our Mother of Perpetual Help Parish Feast Day
+            Holy Family Parish Feast Day
           </h2>
           <div className="bg-white rounded-xl shadow-xl overflow-hidden">
             <img
               src="catholic act 2.jpg" // Using the uploaded image
-              alt="OMPH Parish Feast Day"
+              alt="Holy Family Parish Feast Day"
               className="w-full h-auto object-cover max-h-[600px]"
             />
             {/* Placeholder for carousel indicators if needed later */}
@@ -190,11 +211,11 @@ const ParishActivitiesPage = () => {
               </h3>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold text-primary text-xl mb-1">Rev. Fr. Fidelis Okpanachi (Parish Priest)</p>
+                  <p className="font-semibold text-primary text-xl mb-1">Very Rev. Fr. Melvis Moyaki (Parish Priest)</p>
                   <p>Tuesday & Friday 10:00 am - 1:00 pm</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-primary text-xl mb-1">Rev. Fr. Stephen Okoli (Associate Priest)</p>
+                  <p className="font-semibold text-primary text-xl mb-1">Rev. Fr. Hilary Ogunyemi (Associate Priest)</p>
                   <p>Monday & Wednesday 10:00 am - 1:00 pm</p>
                 </div>
               </div>
